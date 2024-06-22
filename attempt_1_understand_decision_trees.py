@@ -22,4 +22,14 @@ status_df = pd.DataFrame({
 
 
 ##-----------------------------------------------------------
-## Step 2: Spe
+## Step 2: Specify the algorithmic details
+
+### Specify Variables:
+#### Independent Variable: GPA 
+#### Dependent Variable: Status
+
+### Algorithm: Decision Tree 
+#### Decision Tree Type: Classification within CART (Classification and Regression Trees)
+#### Splitting Criterion: Gini Index
+#### Maximum Depth: 2
+
