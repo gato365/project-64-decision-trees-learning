@@ -33,3 +33,53 @@ status_df = pd.DataFrame({
 #### Splitting Criterion: Gini Index
 #### Maximum Depth: 2
 
+##-----------------------------------------------------------
+
+
+
+
+##-----------------------------------------------------------
+## Step 3: Build the Decision Tree
+### Step 3.1 - Splitting the DataFrame based on the condition GPA <= 3
+
+group_1 = status_df[status_df['GPA'] <= 3]
+group_2 = status_df[status_df['GPA'] > 3]
+
+
+
+### Step 3.2 - Calculate the Gini Index for each group
+
+def gini_index(group, classes):
+    n_instances = float(len(group))
+    if n_instances == 0:  # Avoid division by zero
+        return 0
+    score = 0.0
+    # Sum the squared proportion of each class
+    for class_val in classes:
+        p = (group['Status'] == class_val).sum() / n_instances
+        score += p * p
+    return 1.0 - score
+
+
+
+# List of unique class values
+classes = status_df['Status'].unique()
+
+# Calculate Gini Index for each group
+gini_group_1 = gini_index(group_1, classes)
+gini_group_2 = gini_index(group_2, classes)
+
+print(f"Gini Index for Group 1 (GPA <= 3): {gini_group_1}")
+print(f"Gini Index for Group 2 (GPA > 3): {gini_group_2}")
+
+
+### Step 3.3 - Calculate the weighted Gini Index 
+
+n_instances = float(len(status_df))
+weighted_gini_1 = (len(group_1) / n_instances) * gini_group_1
+weighted_gini_2 = (len(group_2) / n_instances) * gini_group_2
+
+weighted_gini = weighted_gini_1 + weighted_gini_2
+
+
+print(f"Weighted Gini Index: {weighted_gini}")
