@@ -1,7 +1,7 @@
 import numpy as np
 
 # Sample data: labels of elements in a set
-labels = np.array(['A', 'B', 'A', 'A', 'B', 'B', 'B', 'A', 'A'])
+labels = np.array(['No'  'No', 'Yes', 'Yes', 'No', 'Yes', 'No', 'Yes', 'Yes', 'Yes'])
 
 # Count the occurrences of each label in the dataset
 unique_labels, label_counts = np.unique(labels, return_counts=True)
