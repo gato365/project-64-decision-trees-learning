@@ -27,6 +27,14 @@ status_2_df = pd.DataFrame({
 
 
 
+
+status_3_df = pd.DataFrame({
+    'GPA': [1, 1, 1, 2, 2, 3, 3, 4, 4, 4],
+    'Status': ['No', 'No', 'No', 'No', 'No', 'No', 'No', 'Yes', 'Yes', 'Yes']
+})
+
+
+
 ##-----------------------------------------------------------
 
 
@@ -109,3 +117,17 @@ for result in split_2_results:
     print(f"Split at {result['split_point']}: Gini One = {result['gini_one']:.4f}, "
           f"Gini Two = {result['gini_two']:.4f}, Weighted Gini = {result['weighted_gini']:.4f}")
 
+
+
+## Specified split points for df 3
+split_3_points = status_3_df['GPA'].unique().tolist()
+
+## Calculate Gini indices for the splits for df 3
+split_3_results = evaluate_splits(status_3_df, split_3_points, 'GPA', 'Status')
+
+
+## Display the results for df 3
+print("\nSplit 3 Results")
+for result in split_3_results:
+    print(f"Split at {result['split_point']}: Gini One = {result['gini_one']:.4f}, "
+          f"Gini Two = {result['gini_two']:.4f}, Weighted Gini = {result['weighted_gini']:.4f}")
