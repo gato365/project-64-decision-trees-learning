@@ -82,3 +82,7 @@ split_results = evaluate_splits(status_df, split_points, 'GPA', 'Status')
 for result in split_results:
     print(f"Split at {result['split_point']}: Gini One = {result['gini_one']:.4f}, "
           f"Gini Two = {result['gini_two']:.4f}, Weighted Gini = {result['weighted_gini']:.4f}")
+    
+
+
+
